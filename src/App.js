@@ -1,24 +1,59 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import About from './components/About';
+import Alert from './components/Alert';
+// import About from './components/About';
+import Navbar from './components/Navbar';
+import TextForm from './components/TextForm';
+import React,{useState} from 'react';
+import { Routes, Route } from "react-router-dom";
+
+
+
 
 function App() {
+  const [mode, setMode] = useState('Light');
+  const [alert,setAlert]=useState(null);
+  const toggleHandler=()=>{
+        if(mode==="Dark"){
+          setMode('Light');
+          document.body.style.backgroundColor='#f0f0f0';
+          document.body.style.color='#282828';
+          showAlert("Enabled to light mode","Success");
+          // document.title='Text Utils-LightMode';//dynamic title changing
+
+        }else{
+          setMode('Dark')
+          document.body.style.backgroundColor='rgb(17 6 67)';
+          document.body.style.color='#f0f0f0';
+          showAlert("Enabled to dark mode","Success");
+          // document.title='Text Utils-DarkMode'; //dynamic title changing
+
+
+        }
+  }
+  const showAlert=(message,type)=>{
+        setAlert({
+          msg:message,
+          type:type
+        })
+        setTimeout(() => {
+          setAlert(null)
+        }, 1500);
+      }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section >
+    <Navbar title="TextUtils2" modes={mode} toggleMode={toggleHandler}/>
+    <Alert alerted={alert}/>
+    <Routes>
+      <Route path="/" element={<TextForm shownAlert={showAlert} heading="Enter the text to analyze" modes={mode} />} />
+      <Route path="#" element={<TextForm shownAlert={showAlert} heading="Enter the text to analyze" modes={mode} />} />
+      <Route path="/about" element={<About />} />
+    </Routes>;
+    {/* <TextForm shownAlert={showAlert} heading="Enter the text to analyze" modes={mode} /> */}
+    {/* <About/> */}
+    </section>
+    
   );
 }
 
