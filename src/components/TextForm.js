@@ -36,8 +36,8 @@ export default function TextForm(props) {
   return ( 
     <div className='container'>
         <div className="mb-3">
-            <h1>{props.head}</h1>
-            <textarea className="form-control" value={text} id="myBox" rows="8" onChange={handleOnChange} style={{backgroundColor:props.modes==='Dark'?'darkgray':'white'}}></textarea>
+            <h1 className='my-3'>{props.head}</h1>
+            <textarea className="form-control" value={text} id="myBox" rows="8" onChange={handleOnChange} style={{backgroundColor:props.modes==='Dark'?'darkgray':'white'}}>{props.heading}</textarea>
             <button className="btn btn-outline-primary my-2 mx-2" onClick={handleClick}>Uppercase</button>
             <button className="btn btn-outline-primary my-2 mx-2  " onClick={handleClick}>Lowercase</button>
             <button className="btn btn-outline-primary my-2 mx-2 " onClick={handleClick}>Capitalize</button>
@@ -45,8 +45,8 @@ export default function TextForm(props) {
         </div>
         <div className='container'>
             <h2>Your text summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
-            <p>{(0.008*text.split(" ").length).toFixed(3)} minutes to read</p>
+            <p>{text===""?0:text.split(" ").length} words and {text.length} characters</p>
+            <p>{text===""?0:(0.008*text.split(" ").length).toFixed(3)} minutes to read</p>
             <h2>Preview</h2>
             <p>{text.length!=0?text:"Enter text to preview"}</p>
         </div>
