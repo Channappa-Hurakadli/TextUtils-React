@@ -19,14 +19,14 @@ function App() {
           setMode('Light');
           document.body.style.backgroundColor='#f0f0f0';
           document.body.style.color='#282828';
-          showAlert("Enabled to light mode","Success");
+          showAlert("Enabled light mode","Success");
           // document.title='Text Utils-LightMode';//dynamic title changing
 
         }else{
           setMode('Dark')
           document.body.style.backgroundColor='rgb(17 6 67)';
           document.body.style.color='#f0f0f0';
-          showAlert("Enabled to dark mode","Success");
+          showAlert("Enabled dark mode","Success");
           // document.title='Text Utils-DarkMode'; //dynamic title changing
 
 
@@ -43,14 +43,14 @@ function App() {
       }
   return (
     <section >
-    <Navbar title="TextUtils2" modes={mode} toggleMode={toggleHandler}/>
+    <Navbar title="TEXT UTILS" modes={mode} toggleMode={toggleHandler}/>
     <Alert alerted={alert}/>
     <Routes>
         
-        <Route path="/" element={<TextForm shownAlert={showAlert} heading="Enter the text " modes={mode} head="Enter the text to Analyze" />} />
-        <Route path="#" element={<TextForm shownAlert={showAlert} heading="Enter the text " modes={mode} head="Enter the text to Analyze" />} />
+        <Route path="/" element={<TextForm shownAlert={showAlert} heading="Enter the text " modes={mode} head="Try TextUtils - Word Counter, Character Counter, Case Converter" />} />
+        <Route path="#" element={<TextForm shownAlert={showAlert} heading="Enter the text " modes={mode} head="Try TextUtils - Word Counter, Character Counter, Case Converter" />} />
         <Route path="/about" element={<About modes={mode} />} />
-    </Routes>;
+    </Routes>
     {/* <TextForm shownAlert={showAlert} heading="Enter the text to analyze" modes={mode} /> */}
     {/* <About/> */}
     </section>
