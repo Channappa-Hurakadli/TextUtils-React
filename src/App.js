@@ -5,7 +5,7 @@ import Alert from './components/Alert';
 // import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { Routes, Route } from "react-router-dom";
 
 
@@ -41,6 +41,7 @@ function App() {
           setAlert(null)
         }, 1500);
       }
+      
   return (
     <section >
     <Navbar title="TEXT UTILS" modes={mode} toggleMode={toggleHandler}/>
